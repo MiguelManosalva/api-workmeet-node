@@ -1,5 +1,5 @@
 {
-  "name": "backend-node",
+  "name": "api-qr",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -25,5 +25,8 @@
     "morgan": "^1.9.1",
     "nodemon": "^1.19.0",
     "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "git-commit-msg-linter": "^3.0.0"
   }
 }

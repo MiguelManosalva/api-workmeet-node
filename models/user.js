@@ -1,23 +1,24 @@
 const mongoose = require("mongoose");
+const { ObjectId } = mongoose.Schema;
 
 const userSchema = new mongoose.Schema(
     {
-        name: {
+        nombre: {
             type: String,
             trim: true,
             required: true
         },
-        surnames: {
+        apellidos: {
             type: String,
             trim: true,
             required: true
         },
-        password: {
+        clave: {
             type: String,
             trim: true,
             required: true
         },
-        birthdate: {
+        fechaNacimiento: {
             type: Date,
             default: new Date()
         },
@@ -31,22 +32,27 @@ const userSchema = new mongoose.Schema(
             type: String,
             default: ""
         },
-        banner: {
+        biografia: {
             type: String,
             default: ""
         },
-        biography: {
+        area: {
             type: String,
             default: ""
         },
-        location: {
-            type: String,
-            default: ""
+        team: {
+            type: ObjectId,
+            ref: "Equipo"
         },
-        website: {
-            type: String,
-            default: ""
-        }
+        role: {
+            type: Number,
+            default: 0
+        },
+        historia: {
+            type: Array,
+            default: []
+        },
+        notificaciones: [notificacionSchema]
     },
     { timestamps: true }
 );

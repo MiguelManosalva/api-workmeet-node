@@ -8,6 +8,9 @@ const cors = require("cors");
 const expressValidator = require("express-validator");
 require("dotenv").config();
 
+const authRoutes = require("./routes/auth.route");
+const relationRoute = require("./routes/relation.route");
+
 // EXPRESS
 const app = express();
 
@@ -35,6 +38,11 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(expressValidator());
 app.use(cors());
+
+
+/* ROTUES */
+app.use("/api", authRoutes);
+app.use("/api", relationRoute);
 
 // PORT
 const port = process.env.PORT || 4300;

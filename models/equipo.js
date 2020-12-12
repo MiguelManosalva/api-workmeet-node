@@ -19,7 +19,7 @@ const equipoSchema = new mongoose.Schema(
             type: String,
             default: ""
         },
-        participantes: [Usuario],
+        //participantes: [Usuario],
         admin: {
             type: ObjectId,
             ref: "User",

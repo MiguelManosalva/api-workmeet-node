@@ -23,7 +23,7 @@ const reunionSchema = new mongoose.Schema(
             required: true
         },
         tareas: [Tarea],
-        participantes: [Usuario],
+        //participantes: [Usuario],
         encargado: {
             type: ObjectId,
             ref: "User",

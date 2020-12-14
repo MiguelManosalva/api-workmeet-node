@@ -19,7 +19,7 @@ const tareaSchema = new mongoose.Schema(
         fechaInicio: {
             type: Date,
             default: new Date(),
-            required: [true, 'Fecha de inicio es obligatoria']
+            //required: [true, 'Fecha de inicio es obligatoria']
         },
         fechaAlerta: {
             type: Date,
@@ -35,10 +35,10 @@ const tareaSchema = new mongoose.Schema(
             trim: true
         },
         //participantes: [Usuario],
-        reunion: {
-            type: ObjectId,
-            ref: "Reunion",
-        },
+        // reunion: {
+        //     type: ObjectId,
+        //     ref: "Reunion",
+        // },
 
     },
     { timestamps: true }

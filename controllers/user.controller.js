@@ -1,5 +1,4 @@
 const User = require("../models/user");
-const { Order } = require("../models/order");
 const { errorHandler } = require("../helpers/dbErrorHandler");
 
 // MIDDLEWARES
@@ -41,15 +40,6 @@ exports.update = (req, res) => {
 
 exports.addUserHistory = (req, res, next) => {
     let historia = [];
-
-    req.body.order.products.forEach(item => {
-        historia.push({
-            _id: item._id,
-            modulo: item.modulo,
-            descripcion: item.descripcion,
-            fechaCrea: item.fechaCrea
-        });
-    });
 
     User.findOneAndUpdate(
         { _id: req.profile._id },

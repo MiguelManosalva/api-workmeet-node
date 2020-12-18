@@ -13,6 +13,7 @@ const swaggerUi = require("swagger-ui-express");
 const authRoutes = require("./routes/auth.route");
 const userRoutes = require("./routes/user.route");
 const tareaRoutes = require("./routes/tarea.route");
+const notificacionRoutes = require("./routes/notificacion.route");
 
 // EXPRESS
 const app = express();
@@ -70,6 +71,8 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
 app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 app.use("/api", tareaRoutes);
+app.use("/api", notificacionRoutes);
+
 
 
 // PORT

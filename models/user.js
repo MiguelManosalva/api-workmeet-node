@@ -55,7 +55,6 @@ const userSchema = new mongoose.Schema(
       default: [],
     },
     salt: String,
-    // notificaciones: [notificacionSchema]
   },
   { timestamps: true }
 );

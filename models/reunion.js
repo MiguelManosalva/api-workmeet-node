@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema;
-const Tarea = require("./tarea");
+const Tarea = require("./tarea").schema;
+const Usuario = require("./user").schema;
 
 
 const reunionSchema = new mongoose.Schema(
@@ -22,7 +23,7 @@ const reunionSchema = new mongoose.Schema(
             required: true
         },
         tareas: [Tarea],
-        //participantes: [Usuario],
+        participantes: [Usuario],
         encargado: {
             type: ObjectId,
             ref: "User",

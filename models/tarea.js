@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema;
-const Usuario = require("./user");
+const Usuario = require("./user").schema;
 
 
 const tareaSchema = new mongoose.Schema(
@@ -34,11 +34,12 @@ const tareaSchema = new mongoose.Schema(
             type: String,
             trim: true
         },
-        //participantes: [Usuario],
-        // reunion: {
-        //     type: ObjectId,
-        //     ref: "Reunion",
-        // },
+        participantes: [Usuario],
+        encargado: {
+            type: ObjectId,
+            ref: "User",
+            required: true
+        },
 
     },
     { timestamps: true }

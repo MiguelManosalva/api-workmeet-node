@@ -17,6 +17,11 @@ const reunionSchema = new mongoose.Schema(
             trim: true,
             required: true
         },
+        fecha:{
+            type: Date,
+            default: new Date(),
+            required: true
+        },
         temas: {
             type: String,
             trim: true,

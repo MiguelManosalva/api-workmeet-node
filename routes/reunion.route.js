@@ -16,6 +16,22 @@ const { requireSignin, isAuth } = require("../controllers/auth.controller");
  */
 router.get("/reunion", requireSignin, isAuth, list);
 
+/**
+ * @swagger
+ * /api/reunion/{reunionId}:
+ *  get:
+ *    summary: reunion
+ *    description: Use to request obtain reunion
+ *    parameters:
+ *      - reunionId: id
+ *        in: path
+ *        type: integer
+ *    responses:
+ *      "200":
+ *        description: A successful response
+ */
+router.get("/reunion/:reunionId", requireSignin, isAuth, read);
+
 
 /**
  * @swagger   

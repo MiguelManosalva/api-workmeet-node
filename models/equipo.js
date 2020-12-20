@@ -1,6 +1,6 @@
 const mongoose = require("mongoose");
 const { ObjectId } = mongoose.Schema;
-const Usuario = require("./user");
+const Usuario = require("./user").schema;
 
 const equipoSchema = new mongoose.Schema(
     {
@@ -15,12 +15,8 @@ const equipoSchema = new mongoose.Schema(
             trim: true,
             required: true
         },
-        avatar: {
-            type: String,
-            default: ""
-        },
-        //participantes: [Usuario],
-        admin: {
+        usuarios: [Usuario],
+        encargado: {
             type: ObjectId,
             ref: "User",
             required: true

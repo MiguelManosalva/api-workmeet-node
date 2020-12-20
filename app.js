@@ -14,6 +14,7 @@ const authRoutes = require("./routes/auth.route");
 const userRoutes = require("./routes/user.route");
 const tareaRoutes = require("./routes/tarea.route");
 const notificacionRoutes = require("./routes/notificacion.route");
+const equipoRoutes = require("./routes/equipo.route");
 
 // EXPRESS
 const app = express();
@@ -72,6 +73,7 @@ app.use("/api", authRoutes);
 app.use("/api", userRoutes);
 app.use("/api", tareaRoutes);
 app.use("/api", notificacionRoutes);
+app.use("/api", equipoRoutes);
 
 
 

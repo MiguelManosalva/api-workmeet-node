@@ -46,7 +46,7 @@ const userSchema = new mongoose.Schema(
       type: ObjectId,
       ref: "Equipo",
     },
-    role: {
+    profile: {
       type: Number,
       default: 0,
     },

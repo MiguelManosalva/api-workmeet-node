@@ -49,9 +49,9 @@ exports.signin = (req, res) => {
     res.cookie("t", token, { expire: new Date() + 9999 });
     
     // return response with user and token to frontend client
-    const { _id, nombre, email, role } = user;
+    const { _id, nombre, email, profile } = user;
     console.log("_id: ", _id);
-    return res.json({ token, user: { _id, nombre, email, role } });
+    return res.json({ token, user: { _id, nombre, email, profile } });
   });
 };
 
@@ -76,7 +76,7 @@ exports.isAuth = (req, res, next) => {
 };
 
 exports.isAdmin = (req, res, next) => {
-  if (req.profile.role === 0) {
+  if (req.profile === 0) {
     return res.status(403).json({
       error: "¡Recursos de administración! Acceso denegado",
     });

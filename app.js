@@ -15,6 +15,8 @@ const userRoutes = require("./routes/user.route");
 const tareaRoutes = require("./routes/tarea.route");
 const notificacionRoutes = require("./routes/notificacion.route");
 const equipoRoutes = require("./routes/equipo.route");
+const reunionRoutes = require("./routes/reunion.route");
+const tipoReunionRoutes = require("./routes/tipoReunion.route");
 
 // EXPRESS
 const app = express();
@@ -74,6 +76,8 @@ app.use("/api", userRoutes);
 app.use("/api", tareaRoutes);
 app.use("/api", notificacionRoutes);
 app.use("/api", equipoRoutes);
+app.use("/api", reunionRoutes);
+app.use("/api", tipoReunionRoutes);
 
 
 

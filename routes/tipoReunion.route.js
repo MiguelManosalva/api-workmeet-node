@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { list, update, create, tipoReunionById } = require("../controllers/tipoReunion.controller");
+const { listTipo, updateTipo, createTipo, tipoReunionById} = require("../controllers/reunion.controller");
 const { requireSignin, isAuth } = require("../controllers/auth.controller");
 
 /**
@@ -14,7 +14,7 @@ const { requireSignin, isAuth } = require("../controllers/auth.controller");
  *      "200":
  *        description: A successful response
  */
-router.get("/tipoReunion", requireSignin, isAuth, list);
+router.get("/tipoReunion", requireSignin, isAuth, listTipo);
 
 /**
  * @swagger   
@@ -39,7 +39,7 @@ router.get("/tipoReunion", requireSignin, isAuth, list);
  *      "400":
  *         description: A bad request response
  */
-router.post("/tipoReunion/create", requireSignin, isAuth, create);
+router.post("/tipoReunion/create", requireSignin, isAuth, createTipo);
 
 /**
  * @swagger   
@@ -64,7 +64,7 @@ router.post("/tipoReunion/create", requireSignin, isAuth, create);
  *      "400":
  *         description: A bad request response
  */
-router.put("/tipoReunion/update/:tipoReunionId", requireSignin, isAuth, update);
+router.put("/tipoReunion/update/:tipoReunionId", requireSignin, isAuth, updateTipo);
 
 
 // params

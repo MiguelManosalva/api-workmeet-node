@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 
-const { list, update, create, reunionById } = require("../controllers/reunion.controller");
+const { list, update, create, reunionById, read } = require("../controllers/reunion.controller");
 const { requireSignin, isAuth } = require("../controllers/auth.controller");
 
 /**
@@ -86,6 +86,29 @@ router.post("/reunion/create", requireSignin, isAuth, create);
  *        application/json:
  *          schema:
  *            properties:
+ *              nombre:
+ *                  type: string
+ *                  description: tipo reunion valido
+ *              asunto:
+ *                  type: string
+ *                  description: asunto reunion valida
+ *              temas:
+ *                  type: string
+ *                  description: temas reunion valida
+ *              fecha:
+ *                  type: string
+ *                  description: fecha reunion valida
+ *              encargado:
+ *                  type: integer
+ *                  description: encargado reunion valida
+ *              participantes:
+ *                  type: array
+ *                  description: descripcion reunion valida
+ *                  items:
+ *                      type: integer              
+ *              tipoReunion:
+ *                  type: integer
+ *                  description: tipoReunion reunion valida
  *              estado:
  *                  type: string
  *                  description: estado reunion valid              

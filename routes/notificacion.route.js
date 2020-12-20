@@ -2,6 +2,8 @@ const express = require("express");
 const router = express.Router();
 
 const { list, update, create, notificacionById } = require("../controllers/notificacion.controller");
+const { requireSignin, isAuth } = require("../controllers/auth.controller");
+
 /**
  * @swagger
  * /api/notificacion:
@@ -12,7 +14,7 @@ const { list, update, create, notificacionById } = require("../controllers/notif
  *      "200":
  *        description: A successful response
  */
-router.get("/notificacion", list);
+router.get("/notificacion", requireSignin, isAuth, list);
 
 
 /**
@@ -52,7 +54,7 @@ router.get("/notificacion", list);
  *      "400":
  *         description: A bad request response
  */
-router.post("/notificacion/create", create);
+router.post("/notificacion/create", requireSignin, isAuth, create);
 
 /**
  * @swagger   
@@ -74,7 +76,7 @@ router.post("/notificacion/create", create);
  *      "400":
  *         description: A bad request response
  */
-router.put("/notificacion/update/:notificacionId", update);
+router.put("/notificacion/update/:notificacionId", requireSignin, isAuth, update);
 
 
 // params

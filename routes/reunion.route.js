@@ -2,43 +2,70 @@ const express = require("express");
 const router = express.Router();
 
 const { list, update, create, reunionById, read } = require("../controllers/reunion.controller");
-const { requireSignin, isAuth } = require("../controllers/auth.controller");
+const { requireSignin, isAuth, isMaintainer } = require("../controllers/auth.controller");
 
 /**
  * @swagger
- * /api/reunion:
+ * /api/reunion/{userId}:
  *  get:
- *    summary: reunion
- *    description: Use to request obtain reuniones
- *    responses:
- *      "200":
- *        description: A successful response
- */
-router.get("/reunion", requireSignin, isAuth, list);
-
-/**
- * @swagger
- * /api/reunion/{reunionId}:
- *  get:
+ *    security:
+ *      - bearerAuth: []
+ *    tags:
+ *      - Reunion
  *    summary: reunion
  *    description: Use to request obtain reunion
  *    parameters:
- *      - reunionId: id
+ *      - name: userId
  *        in: path
  *        type: integer
+ *        required: true
  *    responses:
  *      "200":
  *        description: A successful response
  */
-router.get("/reunion/:reunionId", requireSignin, isAuth, read);
+router.get("/reunion/list/:userId", requireSignin, isAuth, list);
+
+/**
+ * @swagger
+ * /api/reunion/{userId}/{reunionId}:
+ *  get:
+ *    security:
+ *      - bearerAuth: [] 
+ *    tags:
+ *      - Reunion
+ *    summary: reunion
+ *    description: Use to request obtain reunion
+ *    parameters:
+ *      - name: reunionId
+ *        in: path
+ *        type: integer
+ *        required: true
+ *      - name: userId
+ *        in: path
+ *        type: integer
+ *        required: true
+ *    responses:
+ *      "200":
+ *        description: A successful response
+ */
+router.get("/reunion/:userId/:reunionId", requireSignin, isAuth, reunionById, read);
 
 
 /**
  * @swagger   
- * /api/reunion/create: 
+ * /api/reunion/create/{userId}: 
  *  post:
+ *    security:
+ *      - bearerAuth: []
+ *    tags:
+ *      - Reunion
  *    summary: create reunion
  *    description: Use to request create reunion
+ *    parameters:
+ *      - name: userId
+ *        in: path
+ *        type: integer
+ *        required: true
  *    requestBody: 
  *      content:
  *        application/json:
@@ -73,12 +100,25 @@ router.get("/reunion/:reunionId", requireSignin, isAuth, read);
  *      "400":
  *         description: A bad request response
  */
-router.post("/reunion/create", requireSignin, isAuth, create);
+router.post("/reunion/create/:userId", requireSignin, isAuth, create);
 
 /**
  * @swagger   
  * /api/reunion/update: 
  *  put:
+ *    security:
+ *      - bearerAuth: []
+ *    tags:
+ *      - Reunion
+ *    parameters:
+ *      - name: userId
+ *        in: path
+ *        type: integer
+ *        required: true
+ *      - name: reunionId
+ *        in: path
+ *        type: integer
+ *        required: true
  *    summary: update reunion
  *    description: Use to request update reunion
  *    requestBody: 
@@ -118,7 +158,7 @@ router.post("/reunion/create", requireSignin, isAuth, create);
  *      "400":
  *         description: A bad request response
  */
-router.put("/reunion/update/:reunionId", requireSignin, isAuth, update);
+router.put("/reunion/update/:userId/:reunionId", requireSignin, isAuth, update);
 
 
 // params

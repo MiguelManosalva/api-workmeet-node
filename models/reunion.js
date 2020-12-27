@@ -20,7 +20,6 @@ const reunionSchema = new mongoose.Schema(
         fecha:{
             type: Date,
             default: new Date(),
-            required: true
         },
         temas: {
             type: String,
@@ -32,12 +31,10 @@ const reunionSchema = new mongoose.Schema(
         encargado: {
             type: ObjectId,
             ref: "User",
-            required: true
         },
         tipoReunion: {
             type: ObjectId,
             ref: "TipoReunion",
-            required: true
         },
 
     },

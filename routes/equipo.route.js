@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 
 const { list, read, update, create, equipoById } = require("../controllers/equipo.controller");
-const { requireSignin, isAuth } = require("../controllers/auth.controller");
+const { requireSignin, isAuth, isMaintainer } = require("../controllers/auth.controller");
 
 /**
  * @swagger
@@ -48,7 +48,7 @@ router.get("/equipo/list/:userId", requireSignin, isAuth, list);
  *      "200":
  *        description: A successful response
  */
-router.get("/equipo/:userId/:equipoId", requireSignin, isAuth, equipoById, read);
+router.get("/equipo/:userId/:equipoId", requireSignin, isAuth, isMaintainer, equipoById, read);
 
 
 /**

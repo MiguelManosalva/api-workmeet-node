@@ -1,5 +1,6 @@
 const Reunion = require("../models/reunion");
 const TipoReunion = require("../models/tipoReunion");
+const { errorHandler } = require("../helpers/dbErrorHandler");
 
 // middlewares rest
 exports.reunionById = (req, res, next, id) => {
@@ -51,7 +52,9 @@ exports.createTipo = (req, res) => {
 };
 
 exports.read = (req, res) => {
-    return res.json(req.reuniones);
+    console.log(req.reunion);
+
+    return res.json(req.reunion);
 };
 
 exports.list = (req, res) => {

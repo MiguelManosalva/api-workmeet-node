@@ -15,7 +15,7 @@ exports.signup = (req, res) => {
     user.salt = undefined;
     user.hashed_password = undefined;
     res.json({
-      user,
+      user
     });
   });
 };
@@ -31,8 +31,6 @@ exports.signin = (req, res) => {
           "El usuario con ese correo electrónico no existe. Por favor regístrese",
       });
     }
-
-    console.log(user);
 
     // if user is found make sure the email and password match
     // create authenticate method in user model
@@ -66,7 +64,7 @@ exports.requireSignin = expressJwt({
 });
 
 exports.isAuth = (req, res, next) => {
-  let user = req.profile && req.auth && req.profile._id == req.auth._id;
+  let user = req.params && req.auth && req.params.userId == req.auth._id;
   if (!user) {
     return res.status(403).json({
       error: "Acceso denegado",
@@ -79,6 +77,15 @@ exports.isAdmin = (req, res, next) => {
   if (req.profile === 0) {
     return res.status(403).json({
       error: "¡Recursos de administración! Acceso denegado",
+    });
+  }
+  next();
+};
+
+exports.isMaintainer = (req, res, next) => {
+  if (req.profile === 1) {
+    return res.status(403).json({
+      error: "¡Recursos de mantenedor! Acceso denegado",
     });
   }
   next();

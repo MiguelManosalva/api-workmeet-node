@@ -52,13 +52,13 @@ const swaggerOptions = {
     swaggerDefinition: {
         openapi: '3.0.0',
         info: {
-            version: "1.0.0",
             title: "Teameet API",
             description: "Teameet API Information",
             contact: {
                 name: "miguel_manosalva_iraira"
             },
-            servers: ["http://localhost:8001"]
+            servers: ["http://localhost:8001"],
+            version: "1.0.0"
         }
     },
     // definition the apis with swagger 

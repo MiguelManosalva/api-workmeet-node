@@ -48,7 +48,7 @@ const userSchema = new mongoose.Schema(
     },
     profile: {
       type: Number,
-      default: 0,
+      default: 1,
     },
     historia: {
       type: Array,

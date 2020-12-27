@@ -19,7 +19,6 @@ const equipoSchema = new mongoose.Schema(
         encargado: {
             type: ObjectId,
             ref: "User",
-            required: true
         },
 
     },

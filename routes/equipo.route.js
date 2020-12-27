@@ -6,31 +6,38 @@ const { requireSignin, isAuth } = require("../controllers/auth.controller");
 
 /**
  * @swagger
- * /api/equipos:
- *  get:
- *    summary: equipo
- *    description: Use to request obtain equipo
- *    responses:
- *      "200":
- *        description: A successful response
- */
-router.get("/equipos", requireSignin, isAuth, list);
-
-/**
- * @swagger
- * /api/equipo/{equipoId}:
+ * /api/equipo/list/{userId}:
  *  get:
  *    summary: equipo
  *    description: Use to request obtain equipo
  *    parameters:
- *      - equipoId: id
+ *      - name: userId
  *        in: path
  *        type: integer
  *    responses:
  *      "200":
  *        description: A successful response
  */
-router.get("/equipo/:equipoId", requireSignin, isAuth, read);
+router.get("/equipo/list/:userId", requireSignin, isAuth, list);
+
+/**
+ * @swagger
+ * /api/equipo/{userId}/{equipoId}:
+ *  get:
+ *    summary: equipo
+ *    description: Use to request obtain equipo
+ *    parameters:
+ *      - name: equipoId
+ *        in: path
+ *        type: integer
+ *      - name: userId
+ *        in: path
+ *        type: integer
+ *    responses:
+ *      "200":
+ *        description: A successful response
+ */
+router.get("/equipo/:userId/:equipoId", requireSignin, isAuth, equipoById, read);
 
 
 /**
@@ -44,9 +51,9 @@ router.get("/equipo/:equipoId", requireSignin, isAuth, read);
  *        application/json:
  *          schema:
  *            properties:
- *              tipo:
+ *              nombre:
  *                  type: string
- *                  description: tipo equipo valido
+ *                  description: nombre equipo valido
  *              descripcion:
  *                  type: string
  *                  description: descripcion equipo valida
@@ -70,11 +77,11 @@ router.get("/equipo/:equipoId", requireSignin, isAuth, read);
  *      "400":
  *         description: A bad request response
  */
-router.post("/equipo/create", requireSignin, isAuth,  create);
+router.post("/equipo/create/:userId", requireSignin, isAuth, create);
 
 /**
  * @swagger   
- * /api/equipo/update: 
+ * /api/equipo/update/{equipoId}: 
  *  put:
  *    summary: update equipo
  *    description: Use to request update equipo

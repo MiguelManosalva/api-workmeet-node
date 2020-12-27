@@ -2,12 +2,16 @@ const Equipo = require("../models/equipo");
 
 // middlewares rest
 exports.equipoById = (req, res, next, id) => {
-    equipo.findById(id).exec((err, equipo) => {
+
+    Equipo.findById(id).exec((err, equipo) => {
         if (err || !equipo) {
             return res.status(404).json({
                 error: "equipo no encontrado!"
             });
         }
+
+        console.log("equipo: ", equipo);
+
         req.equipo = equipo;
         next();
     });
@@ -18,7 +22,7 @@ exports.read = (req, res) => {
 };
 
 exports.list = (req, res) => {
-    equipo.find().exec((err, data) => {
+    Equipo.find().exec((err, data) => {
         if (err) {
             return res.status.json({
                 error: errorHandler(err)
@@ -29,7 +33,8 @@ exports.list = (req, res) => {
 };
 
 exports.create = (req, res) => {
-    const equipo = new equipo(req.body);
+    const equipo = new Equipo(req.body);
+    console.log("Equipo: ", equipo);
     equipo.save((err, data) => {
         if (err) {
             return res.status(400).json({

@@ -59,7 +59,19 @@ const swaggerOptions = {
             },
             servers: ["http://localhost:8001"],
             version: "1.0.0"
-        }
+        },
+        components: {
+            securitySchemes: {
+              bearerAuth: {
+                type: 'http',
+                scheme: 'bearer',
+                bearerFormat: 'JWT',
+              }
+            }
+          },
+          security: [{
+            bearerAuth: []
+          }],
     },
     // definition the apis with swagger 
     apis: ['./routes/*.js']

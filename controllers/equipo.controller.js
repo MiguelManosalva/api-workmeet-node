@@ -1,4 +1,5 @@
 const Equipo = require("../models/equipo");
+const { errorHandler } = require("../helpers/dbErrorHandler");
 
 // middlewares rest
 exports.equipoById = (req, res, next, id) => {
@@ -34,7 +35,6 @@ exports.list = (req, res) => {
 
 exports.create = (req, res) => {
     const equipo = new Equipo(req.body);
-    console.log("Equipo: ", equipo);
     equipo.save((err, data) => {
         if (err) {
             return res.status(400).json({

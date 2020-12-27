@@ -8,12 +8,17 @@ const { requireSignin, isAuth } = require("../controllers/auth.controller");
  * @swagger
  * /api/equipo/list/{userId}:
  *  get:
+ *    security:
+ *      - bearerAuth: []
+ *    tags:
+ *      - Equipo
  *    summary: equipo
  *    description: Use to request obtain equipo
  *    parameters:
  *      - name: userId
  *        in: path
  *        type: integer
+ *        required: true
  *    responses:
  *      "200":
  *        description: A successful response
@@ -24,15 +29,21 @@ router.get("/equipo/list/:userId", requireSignin, isAuth, list);
  * @swagger
  * /api/equipo/{userId}/{equipoId}:
  *  get:
+ *    security:
+ *      - bearerAuth: [] 
+ *    tags:
+ *      - Equipo
  *    summary: equipo
  *    description: Use to request obtain equipo
  *    parameters:
  *      - name: equipoId
  *        in: path
  *        type: integer
+ *        required: true
  *      - name: userId
  *        in: path
  *        type: integer
+ *        required: true
  *    responses:
  *      "200":
  *        description: A successful response
@@ -42,10 +53,19 @@ router.get("/equipo/:userId/:equipoId", requireSignin, isAuth, equipoById, read)
 
 /**
  * @swagger   
- * /api/equipo/create: 
+ * /api/equipo/create/{userId}: 
  *  post:
+ *    security:
+ *      - bearerAuth: []
+ *    tags:
+ *      - Equipo
  *    summary: create equipo
  *    description: Use to request create equipo
+ *    parameters:
+ *      - name: userId
+ *        in: path
+ *        type: integer
+ *        required: true
  *    requestBody: 
  *      content:
  *        application/json:
@@ -62,15 +82,12 @@ router.get("/equipo/:userId/:equipoId", requireSignin, isAuth, equipoById, read)
  *                  description: ecargado equipo valido
  *                  properties:
  *                      id: 
- *                          type: integer
+ *                          type: string
  *              usuarios:
  *                  type: array
  *                  description: descripcion equipo valida
  *                  items:
- *                      type: integer              
- *              estado:
- *                  type: string
- *                  description: estado equipo valida
+ *                      type: string              
  *    responses:
  *      "200":
  *         description: A successful response
@@ -81,8 +98,21 @@ router.post("/equipo/create/:userId", requireSignin, isAuth, create);
 
 /**
  * @swagger   
- * /api/equipo/update/{equipoId}: 
+ * /api/equipo/update/{userId}/{equipoId}: 
  *  put:
+ *    security:
+ *      - bearerAuth: []
+ *    tags:
+ *      - Equipo
+ *    parameters:
+ *      - name: userId
+ *        in: path
+ *        type: integer
+ *        required: true
+ *      - name: equipoId
+ *        in: path
+ *        type: integer
+ *        required: true
  *    summary: update equipo
  *    description: Use to request update equipo
  *    requestBody: 
@@ -90,16 +120,19 @@ router.post("/equipo/create/:userId", requireSignin, isAuth, create);
  *        application/json:
  *          schema:
  *            properties:
- *              estado:
+ *              nombre:
  *                  type: string
  *                  description: estado equipo valid              
+ *              descripcion:
+ *                  type: string
+ *                  description: estado equipo valid  
  *    responses:
  *      "200":
  *         description: A successful response
  *      "400":
  *         description: A bad request response
  */
-router.put("/equipo/update/:equipoId", requireSignin, isAuth, update);
+router.put("/equipo/update/:userId/:equipoId", requireSignin, isAuth, update);
 
 
 // params

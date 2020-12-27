@@ -10,11 +10,16 @@ const { requireSignin, isAuth } = require("../controllers/auth.controller");
  *  get:
  *    summary: notificacion
  *    description: Use to request obtain notificaciones
+ *    parameters:
+ *      - in: header
+ *        name: X-Request-ID
+ *        type: string
+ *        required: true
  *    responses:
  *      "200":
  *        description: A successful response
  */
-router.get("/notificacion", requireSignin, isAuth, list);
+router.get("/notificacion/:userId", requireSignin, isAuth, list);
 
 
 /**
@@ -54,7 +59,7 @@ router.get("/notificacion", requireSignin, isAuth, list);
  *      "400":
  *         description: A bad request response
  */
-router.post("/notificacion/create", requireSignin, isAuth, create);
+router.post("/notificacion/create", create);
 
 /**
  * @swagger   
@@ -76,7 +81,7 @@ router.post("/notificacion/create", requireSignin, isAuth, create);
  *      "400":
  *         description: A bad request response
  */
-router.put("/notificacion/update/:notificacionId", requireSignin, isAuth, update);
+router.put("/notificacion/update/:notificacionId", update);
 
 
 // params

@@ -13,8 +13,8 @@ _Es necesario instalar Node, MongoDB_
 
 ### Levantar el proyecto 📋
 
-_Instalar dependencias del proyecto con *npm install*, luego levantar el proyecto con *npm run start*_
-* Ruta -> http://localhost:8001
+_Instalar dependencias del proyecto con_ `npm install`_, luego levantar el proyecto con_ `npm run start`
+* local -> http://localhost:8001
 
 ## Documentación api ⚙️
 

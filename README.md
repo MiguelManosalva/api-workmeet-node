@@ -11,6 +11,11 @@ _Teameet gestiona nuestras reuniones categorizandolas en equipos de trabajo y fr
 
 _Es necesario instalar Node, MongoDB_
 
+### Levantar el proyecto 📋
+
+_Instalar dependencias del proyecto con *npm install*, luego levantar el proyecto con *npm run start*_
+* Ruta -> http://localhost:8001
+
 ## Documentación api ⚙️
 
 * Swagger -> http://localhost:8001/api-docs/

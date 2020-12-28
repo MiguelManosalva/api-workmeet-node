@@ -1,4 +1,4 @@
-# api-workmeet-node
+# api-teameet-node
 
 _Proyecto realizado con NODE.JS para app teameet_
 

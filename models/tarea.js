@@ -28,7 +28,7 @@ const tareaSchema = new mongoose.Schema(
         fechaVencimiento: {
             type: Date,
             default: new Date(),
-            required: [true, 'Fecha de vencimiento es obligatoria']
+            // required: [true, 'Fecha de vencimiento es obligatoria']
         },
         temas: {
             type: String,
@@ -38,7 +38,7 @@ const tareaSchema = new mongoose.Schema(
         encargado: {
             type: ObjectId,
             ref: "User",
-            required: true
+            // required: true
         },
 
     },

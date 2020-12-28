@@ -64,6 +64,7 @@ exports.requireSignin = expressJwt({
 });
 
 exports.isAuth = (req, res, next) => {
+  console.log(req.params);
   let user = req.params && req.auth && req.params.userId == req.auth._id;
   if (!user) {
     return res.status(403).json({

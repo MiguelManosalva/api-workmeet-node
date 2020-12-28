@@ -1,13 +1,15 @@
 const Notificacion = require("../models/notificacion");
+const { errorHandler } = require("../helpers/dbErrorHandler");
 
 // middlewares rest
 exports.notificacionById = (req, res, next, id) => {
-    notificacion.findById(id).exec((err, notificacion) => {
+    Notificacion.findById(id).exec((err, notificacion) => {
         if (err || !notificacion) {
             return res.status(404).json({
                 error: "Notificacion no encontrada!"
             });
         }
+
         req.notificacion = notificacion;
         next();
     });
@@ -38,7 +40,6 @@ exports.create = (req, res) => {
 
 exports.update = (req, res) => {
     const notificacion = req.notificacion;
-    
     notificacion.estado = req.body.estado;
 
     notificacion.save((err, data) => {

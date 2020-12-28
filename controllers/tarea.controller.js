@@ -1,4 +1,5 @@
 const Tarea = require("../models/tarea");
+const { errorHandler } = require("../helpers/dbErrorHandler");
 
 // middlewares rest
 exports.tareaById = (req, res, next, id) => {

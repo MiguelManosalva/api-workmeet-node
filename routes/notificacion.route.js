@@ -6,14 +6,18 @@ const { requireSignin, isAuth } = require("../controllers/auth.controller");
 
 /**
  * @swagger
- * /api/notificacion:
+ * /api/notificacion/{userId}:
  *  get:
+ *    security:
+ *      - bearerAuth: []
+ *    tags:
+ *      - Notificacion
  *    summary: notificacion
- *    description: Use to request obtain notificaciones
+ *    description: Use to request obtain notificacion
  *    parameters:
- *      - in: header
- *        name: X-Request-ID
- *        type: string
+ *      - name: userId
+ *        in: path
+ *        type: integer
  *        required: true
  *    responses:
  *      "200":
@@ -24,10 +28,19 @@ router.get("/notificacion/:userId", requireSignin, isAuth, list);
 
 /**
  * @swagger   
- * /api/notificacion/create: 
+ * /api/notificacion/create/{userId}: 
  *  post:
+ *    security:
+ *      - bearerAuth: []
+ *    tags:
+ *      - Notificacion
  *    summary: create notificacion
  *    description: Use to request create notificacion
+ *    parameters:
+ *      - name: userId
+ *        in: path
+ *        type: integer
+ *        required: true
  *    requestBody: 
  *      content:
  *        application/json:
@@ -59,12 +72,25 @@ router.get("/notificacion/:userId", requireSignin, isAuth, list);
  *      "400":
  *         description: A bad request response
  */
-router.post("/notificacion/create", create);
+router.post("/notificacion/create/:userId", requireSignin, isAuth, create);
 
 /**
  * @swagger   
- * /api/notificacion/update: 
+ * /api/notificacion/update/{userId}/{notificacionId}: 
  *  put:
+ *    security:
+ *      - bearerAuth: []
+ *    tags:
+ *      - Notificacion
+ *    parameters:
+ *      - name: userId
+ *        in: path
+ *        type: integer
+ *        required: true
+ *      - name: notificacionId
+ *        in: path
+ *        type: integer
+ *        required: true
  *    summary: update notificacion
  *    description: Use to request update notificacion
  *    requestBody: 
@@ -81,7 +107,7 @@ router.post("/notificacion/create", create);
  *      "400":
  *         description: A bad request response
  */
-router.put("/notificacion/update/:notificacionId", update);
+router.put("/notificacion/update/:userId/:notificacionId", requireSignin, isAuth, update);
 
 
 // params

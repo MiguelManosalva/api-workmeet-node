@@ -6,22 +6,40 @@ const { requireSignin, isAuth, isMaintainer } = require("../controllers/auth.con
 
 /**
  * @swagger
- * /api/tipoReunion:
+ * /api/tipoReunion/{userId}:
  *  get:
+ *    security:
+ *      - bearerAuth: []
+ *    tags:
+ *      - Reunion
  *    summary: tipoReunion
+ *    parameters:
+ *      - name: userId
+ *        in: path
+ *        type: integer
+ *        required: true
  *    description: Use to request obtain tipoReuniones
  *    responses:
  *      "200":
  *        description: A successful response
  */
-router.get("/tipoReunion", requireSignin, isAuth, listTipo);
+router.get("/tipoReunion/:userId", requireSignin, isAuth, listTipo);
 
 /**
  * @swagger   
- * /api/tipoReunion/create: 
+ * /api/tipoReunion/create/{userId}: 
  *  post:
- *    summary: create tipoReunion
- *    description: Use to request create tipoReunion
+ *    security:
+ *      - bearerAuth: []
+ *    tags:
+ *      - Reunion
+ *    summary: create tipo reunion
+ *    description: Use to request create tipo reunion
+ *    parameters:
+ *      - name: userId
+ *        in: path
+ *        type: integer
+ *        required: true
  *    requestBody: 
  *      content:
  *        application/json:
@@ -39,14 +57,25 @@ router.get("/tipoReunion", requireSignin, isAuth, listTipo);
  *      "400":
  *         description: A bad request response
  */
-router.post("/tipoReunion/create", requireSignin, isAuth, isMaintainer, createTipo);
+router.post("/tipoReunion/create/:userId", requireSignin, isAuth, isMaintainer, createTipo);
 
 /**
  * @swagger   
- * /api/tipoReunion/update: 
+ * /api/tipoReunion/update/{userId}/{tipoReunionId}: 
  *  put:
- *    summary: update tipoReunion
- *    description: Use to request update tipoReunion
+ *    security:
+ *      - bearerAuth: []
+ *    tags:
+ *      - Reunion
+ *    parameters:
+ *      - name: userId
+ *        in: path
+ *        type: integer
+ *        required: true
+ *      - name: tipoReunionId
+ *        in: path
+ *        type: integer
+ *        required: true
  *    requestBody: 
  *      content:
  *        application/json:
@@ -64,7 +93,7 @@ router.post("/tipoReunion/create", requireSignin, isAuth, isMaintainer, createTi
  *      "400":
  *         description: A bad request response
  */
-router.put("/tipoReunion/update/:tipoReunionId", requireSignin, isAuth, isMaintainer, updateTipo);
+router.put("/tipoReunion/update/:userId/:tipoReunionId", requireSignin, isAuth, isMaintainer, updateTipo);
 
 
 // params

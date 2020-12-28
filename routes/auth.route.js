@@ -15,6 +15,8 @@ const { userSignupValidator } = require("../validators");
  *  post:
  *    summary: signup user
  *    description: Use to request signup user
+ *    tags:
+ *      - Auth
  *    requestBody: 
  *      content:
  *        application/json:
@@ -44,6 +46,8 @@ router.post("/signup", userSignupValidator, signup);
  * @swagger   
  * /api/signin: 
  *  post:
+ *    tags:
+ *      - Auth
  *    summary: signin user
  *    description: Use to request signin user
  *    requestBody: 
@@ -69,6 +73,8 @@ router.post("/signin", signin);
  * @swagger
  * /api/signout:
  *  get:
+ *    tags:
+ *      - Auth
  *    summary: signout user
  *    description: Use to request logout user
  *    responses:
